@@ -74,18 +74,20 @@
                     }
 
                     //发送请求进行登录
-                  /*  const { data: res } = await this.$http.post('login', this.adminLoginForm);
+                    const { data: res } = await this.$http.post('login', this.adminLoginForm);
                     //   console.log(res);
-                    if (res.meta.status !== 200) {
+
+                    if (res.code !== 200) {
                         return this.$message.error('登录失败:' + res.meta.msg) //console.log("登录失败:"+res.meta.msg)
                     }
 
                     this.$message.success('登录成功')
                     console.log(res)
-                    //保存token
+                    /*//保存token
                     window.sessionStorage.setItem('token', res.data.token)
                     // 导航至/home
                     this.$router.push('/home')*/
+                    this.$router.push('/home')
                 })
             }
         }
