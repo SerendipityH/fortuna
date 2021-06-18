@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 const AdminLogin = ()=>import('../views/AdminLogin');
-const Home=()=>import('../views/Home')
-Vue.use(VueRouter)
+const Home=()=>import('../views/Home');
+Vue.use(VueRouter);
 
 const routes = [
   {
@@ -19,10 +19,10 @@ const routes = [
     name:'AdminLogin',
     component:AdminLogin
   }
-]
+];
 
 const router = new VueRouter({
   routes
-})
+});
 
 export default router
