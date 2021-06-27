@@ -56,13 +56,16 @@
 
             }
         },
+        created(){
+            window.addEventListener('keydown', this.handleKeyDown, true)
+        },
         methods: {
             //添加表单重置方法
-          /*  resetAdminLoginForm() {
+            resetAdminLoginForm() {
                 //this=>当前组件对象，其中的属性$refs包含了设置的表单ref
                 //   console.log(this)
-                this.$refs.adminLoginFormRef.resetFields()
-            },*/
+                this.$refs.adminLoginForm.resetFields()
+            },
             adminLogin(formName) {
                 //点击登录的时候先调用validate方法验证表单内容是否有误
                 this.$refs[formName].validate(async valid => {
@@ -70,7 +73,7 @@
                     //如果valid参数为true则验证通过
                     console.log(valid)
                     if (!valid) {
-                        alert("error")
+                      //  alert("error")
                     }
 
                     //发送请求进行登录
@@ -78,7 +81,7 @@
                     //   console.log(res);
 
                     if (res.code !== 200) {
-                        return this.$message.error('登录失败:' + res.meta.msg) //console.log("登录失败:"+res.meta.msg)
+                        return this.$message.error('登录失败:' + res.msg) //console.log("登录失败:"+res.meta.msg)
                     }
 
                     this.$message.success('登录成功')
@@ -89,7 +92,20 @@
                     this.$router.push('/home')*/
                     this.$router.push('/home')
                 })
+            },
+            handleKeyDown(e) {
+                let key = null;
+                if (window.event === undefined) {
+                    key = e.keyCode;
+                } else {
+                    key = window.event.keyCode;
+                }
+                if (key === 13) {
+                    this.adminLogin('adminLoginForm');
+                }
             }
+
+
         }
     }
 </script>

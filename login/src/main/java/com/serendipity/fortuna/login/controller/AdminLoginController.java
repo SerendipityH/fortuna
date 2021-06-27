@@ -1,6 +1,7 @@
 package com.serendipity.fortuna.login.controller;
 
 import com.serendipity.fortuna.login.domain.User;
+import com.serendipity.fortuna.login.result.CodeMsg;
 import com.serendipity.fortuna.login.result.Result;
 import com.serendipity.fortuna.login.service.UserService;
 import com.serendipity.fortuna.login.vo.LoginVo;
@@ -26,7 +27,11 @@ public class AdminLoginController {
         String username = loginVo.getUsername();
         String password = loginVo.getPassword();
         User user = userService.findByLoginAccount(username, password);
-        return Result.success(user);
+        if(user != null){
+            return Result.success(user);
+        }else {
+            return Result.error(CodeMsg.PASSWORD_ERROR);
+        }
     }
 
 }
